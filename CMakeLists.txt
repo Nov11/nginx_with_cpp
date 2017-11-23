@@ -461,3 +461,7 @@ target_link_libraries(nginx_with_cpp Threads::Threads)
 target_link_libraries(nginx_with_cpp crypt)
 target_link_libraries(nginx_with_cpp pcre)
 target_link_libraries(nginx_with_cpp z)
+
+add_custom_command(TARGET nginx_with_cpp
+        POST_BUILD
+        COMMAND ${PROJECT_SOURCE_DIR}/installscript.sh ${PROJECT_SOURCE_DIR})
