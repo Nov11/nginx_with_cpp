@@ -40,3 +40,5 @@
 	test -d "/home/${USER}/NGX/html" 		|| cp -R html "/home/${USER}/NGX"
 
 	test -d "/home/${USER}/NGX/logs" || 		mkdir -p "/home/${USER}/NGX/logs"
+
+	echo "DONE copying conf files"
