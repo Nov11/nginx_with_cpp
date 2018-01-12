@@ -9,11 +9,14 @@
 #include <assert.h>
 #include "NgxWrapper.hpp"
 #include "Noncopyable.h"
-class NgxPool final : public NgxWrapper<ngx_pool_t>, Noncopyable {
-  typedef NgxWrapper<ngx_pool_t> super_type;
-  typedef NgxPool this_type;
+
+/**
+ * NgxPool是个wrapper， 不是ngx_pool_t* 指向对象的所有者， 复制/赋值也没关系， 只是一个指针的复制/赋值
+ */
+
+class NgxPool final : public NgxWrapper<ngx_pool_t> {
  public:
-  NgxPool(ngx_pool_t *p) : super_type(p) {
+  NgxPool(ngx_pool_t *p) : NgxWrapper<ngx_pool_t>(p) {
 
   }
   ~NgxPool() = default;
@@ -94,6 +97,12 @@ class NgxPool final : public NgxWrapper<ngx_pool_t>, Noncopyable {
     setCleanUpElement(&NgxPool::destory<T>, data, dataSize);
   }
 
+  /**
+   * deallocation
+   */
+  void free(void *ptr) {
+    ngx_pfree(get(), ptr);
+  }
 };
 
 #endif //NGINX_WITH_CPP_NGXPOOL_H
