@@ -3,7 +3,7 @@ project(nginx_with_cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 
-include_directories(src/core src/event src/event/modules src/os/unix objs src/http src/http/modules src/mail)
+include_directories(src/core src/event src/event/modules src/os/unix objs src/http src/http/modules src/mail src/cpp)
 
 set(SOURCE_FILES
         objs/ngx_auto_config.h
@@ -117,7 +117,8 @@ set(SOURCE_FILES
         src/http/modules/ngx_http_upstream_ip_hash_module.c
         src/http/modules/ngx_http_upstream_least_conn_module.c
         src/http/modules/ngx_http_upstream_keepalive_module.c
-        )
+        src/cpp/NgxWrapper.hpp
+        src/cpp/Nginx.h src/cpp/NgxUnsetValue.cpp src/cpp/NgxUnsetValue.h src/cpp/NgxValue.cpp src/cpp/NgxValue.h src/cpp/Noncopyable.cpp src/cpp/Noncopyable.h src/cpp/NgxPool.cpp src/cpp/NgxPool.h)
 
 add_executable(nginx_with_cpp ${SOURCE_FILES})
 
