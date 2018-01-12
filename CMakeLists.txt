@@ -118,7 +118,7 @@ set(SOURCE_FILES
         src/http/modules/ngx_http_upstream_least_conn_module.c
         src/http/modules/ngx_http_upstream_keepalive_module.c
         src/cpp/NgxWrapper.hpp
-        src/cpp/Nginx.h src/cpp/NgxUnsetValue.cpp src/cpp/NgxUnsetValue.h src/cpp/NgxValue.cpp src/cpp/NgxValue.h src/cpp/Noncopyable.cpp src/cpp/Noncopyable.h src/cpp/NgxPool.cpp src/cpp/NgxPool.h src/cpp/NgxAllocator.cpp src/cpp/NgxAllocator.h)
+        src/cpp/Nginx.h src/cpp/NgxUnsetValue.cpp src/cpp/NgxUnsetValue.h src/cpp/NgxValue.cpp src/cpp/NgxValue.h src/cpp/Noncopyable.cpp src/cpp/Noncopyable.h src/cpp/NgxPool.cpp src/cpp/NgxPool.h src/cpp/NgxAllocator.cpp src/cpp/NgxAllocator.h src/cpp/NgxString.cpp src/cpp/NgxString.h src/cpp/NgxClock.cpp src/cpp/NgxClock.h src/cpp/NgxDate.cpp src/cpp/NgxDate.h src/cpp/NgxLog.cpp src/cpp/NgxLog.h)
 
 add_executable(nginx_with_cpp ${SOURCE_FILES})
 
