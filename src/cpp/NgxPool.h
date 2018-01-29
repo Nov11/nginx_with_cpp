@@ -120,6 +120,23 @@ class NgxPool final : public NgxWrapper<ngx_pool_t> {
     ngx_str_t tmp{s.size(), reinterpret_cast<u_char *>( const_cast<char *>(s.c_str()))};
     return dup(tmp);
   }
+
+  template<typename T>
+  ngx_array_t *array(ngx_uint_t n = 10) const {
+    auto p = ngx_array_create(get(), n, sizeof(T));
+    assert(p);
+    return p;
+  }
+
+  ngx_buf_t *buffer(std::size_t n) const {
+    return ngx_create_temp_buf(get(), n);
+  }
+  ngx_chain_t *chain() const {
+    auto p = ngx_alloc_chain_link(get());
+    assert(p);
+    p->next = nullptr;//this is important
+    return p;
+  }
 };
 
 #endif //NGINX_WITH_CPP_NGXPOOL_H
