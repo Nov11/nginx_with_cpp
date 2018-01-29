@@ -153,6 +153,7 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 target_link_libraries(nginx_with_cpp Threads::Threads)
 target_link_libraries(nginx_with_cpp crypt)
+target_link_libraries(nginx_with_cpp crypto)
 target_link_libraries(nginx_with_cpp pcre)
 target_link_libraries(nginx_with_cpp z)
 
