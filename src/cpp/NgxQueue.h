@@ -14,7 +14,7 @@ template<typename T,
 
 class NgxQueueNode : public NgxWrapper<ngx_queue_t> {
  public:
-  NgxQueueNode(ngx_queue_t *q) : NgxWrapper(q) {}
+  NgxQueueNode(ngx_queue_t *ptr) : NgxWrapper(ptr) {}
   T &data() const {
     return *(T *) ((u_char *) get() - offset);
   }

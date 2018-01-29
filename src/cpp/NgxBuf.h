@@ -40,10 +40,10 @@ class NgxBuf : public NgxWrapper<ngx_buf_t> {
   }
 
   ngx_str_t range() const {
-    return ngx_str_t{get()->last - get()->pos, get()->pos};
+    return ngx_str_t{static_cast<size_t >(get()->last - get()->pos), get()->pos};
   }
   ngx_str_t boundary() const {
-    return ngx_str_t{get()->end - get()->start, get()->start};
+    return ngx_str_t{static_cast<size_t>(get()->end - get()->start), get()->start};
   }
   bool last() const {
     return get()->last_buf || get()->last_in_chain;
